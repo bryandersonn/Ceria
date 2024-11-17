@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('newsPublishDate');
             $table->string('newsImage');
             $table->text('newsContent');
+            $table->string('newsLink');
             $table->timestamps();
         });
     }
