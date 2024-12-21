@@ -14,8 +14,6 @@ class NewsController extends Controller
         $news = News::all();
 
         return view('home', [
-            // 'products' => $products,
-            // 'category' => $category,
             'news' => $news,
             'problem' => $problem,
         ]);
@@ -40,6 +38,15 @@ class NewsController extends Controller
         return view('home', [
             'news' => $news,
             'problem' => $problem,
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $news = News::where('newsID', 'like', $id)->first();
+
+        return view('newsDetail', [
+            'news' => $news,
         ]);
     }
 }
