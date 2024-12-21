@@ -1,0 +1,27 @@
+main{
+    padding: 10px;
+}
+
+#newsDetailPage{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.newsTitle{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.newsImage img{
+    max-width: 50%;
+}
+
+.newsLink a{
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}

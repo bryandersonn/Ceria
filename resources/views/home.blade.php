@@ -135,7 +135,7 @@
 
         <section id="news">
             @foreach ($news as $n)
-            <a href="{{ $n->newsLink }}" target="_blank">
+            <a href="/newsDetail/{{ $n->newsID }}" target="_blank">
                 <div class="newsContainer">
                     <div class="newsContainerLeft">
                         <div class="newsContainerLeftTop"> <b>{{ $n->newsTitle }}</b>  </div>
