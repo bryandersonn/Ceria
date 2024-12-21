@@ -9,6 +9,7 @@
     rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
     <link rel="stylesheet" href="/css/carousel.css">
+    <link rel="stylesheet" href="/css/homeProblem.css">
 </head>
 <body>
 
@@ -43,11 +44,11 @@
       </nav>
 
       <section id="aboutCeria">
-        ABOUT REGION
+        <h1>ABOUT REGION</h1>
       </section>
 
       <section id="statistics">
-        STATISTICS REGION
+        <h1>STATISTICS REGION</h1>
       </section>
 
       {{-- <br><br><br><br><br><br> --}}
@@ -60,9 +61,9 @@
 
               @foreach ($news as $n)
               @if ($loop->first == true)
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $n->newsID-1 }}" class="active" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
               @else
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $n->newsID-1 }}" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
               @endif
               @endforeach
             </div>
@@ -79,7 +80,7 @@
               @foreach ($news as $n)
               @if ($loop->first == true)
               <div class="carousel-item active">
-                <a href="https://kompas.com" target="_blank">
+                <a href="{{ $n->newsLink }}" target="_blank">
                     <img src="{{ $n->newsImage }}" class="d-block w-100" alt="..." height="500">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>{{ $n->newsTitle }}</h5>
@@ -89,7 +90,7 @@
               </div>
               @else
               <div class="carousel-item">
-                <a href="https://kompas.com" target="_blank">
+                <a href="{{ $n->newsLink }}" target="_blank">
                     <img src="{{ $n->newsImage }}" class="d-block w-100" alt="..." height="500">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>{{ $n->newsTitle }}</h5>
@@ -129,8 +130,6 @@
           </div>
       </section>
 
-      <section id=""></section>
-
       <br>
 
       @foreach ($news as $n)
@@ -142,6 +141,16 @@
             <p>{{ $n->newsContent }}</p>
         </div>
       @endforeach
+
+      <section id="problems">
+        @foreach ($problem as $p)
+            <div class="problemCard">
+                <h4>{{ $p->problemName }}</h4>
+                <img src="{{ $p->problemImage }}" alt="" width="100" height="100">
+                <h6>{{ $p->problemShortDescription }}</h6>
+            </div>
+        @endforeach
+      </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
