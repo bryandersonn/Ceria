@@ -113,80 +113,73 @@
             </div>
         </section>
 
-            <section id="carousel" class="tw-h-screen tw-content-center">
-                <div class="tw-flex-wrap align-content-center justify-center justify-content-center">
-                    <div id="carouseltitle">
-                        <h1>Berita Terkini</h1>
-                    </div>
-                    <div id="carouselExampleCaptions" class="carousel slide col-md-8 col-sm-12 mx-auto" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            @foreach ($news as $n)
-                                @if ($loop->first)
-                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
-                                @else
-                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $n->newsID }}"></button>
-                                @endif
-                            @endforeach
-                        </div>
-                        <div class="carousel-inner">
-                            @foreach ($news as $n)
-                                @if ($loop->first)
-                                    <div class="carousel-item active">
-                                        <a href="{{ $n->newsLink }}" target="_blank">
-                                            <img src="{{ $n->newsImage }}" class="d-block w-100 tw-rounded-lg" alt="..." height="500">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>{{ $n->newsTitle }}</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @else
-                                    <div class="carousel-item">
-                                        <a href="{{ $n->newsLink }}" target="_blank">
-                                            <img src="{{ $n->newsImage }}" class="d-block w-100 tw-rounded-lg" alt="..." height="500">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>{{ $n->newsTitle }}</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                        @if ($news && count($news) > 1)
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        @endif
-                    </div>
-                    <div class="tw-flex-wrap tw-text-center mt-5">
-                        <a href="#problemSection"><button type="button" class="btn btn-outline-light">Masalah yang dihadapi</button></a>
-                    </div>
+        <section id="concentrationGraphic">
+            <div style="width: 80%; margin: 0 auto;">
+                <h1 class="tw-text-red-600">Tingkat Konsentrasi CO2 di Atmosfer (2011-2022*)</h1>
+                <p class="tw-text-gray-400">Dilansir dari: databok's Konsentrasi CO2 di Atmosfer Terus Naik, Ini Rinciannya. Credit: Monavia Ayu Rizaty</p>
+                <p>Menurut data Badan Penerbangan dan Antariksa Amerika Serikat (NASA), tingkat konsentrasi karbon dioksida (CO2) di atmosfer global sudah mencapai rata-rata 417,6 part per million (ppm) pada 17 Mei 2022.
+                Angka tersebut sudah naik sekitar 6,2% dibanding tahun 2011. Peningkatan itu  juga konsisten terjadi setiap tahun, seperti terlihat pada grafik.</p>
+                <a href="https://databoks.katadata.co.id/demografi/statistik/9232a4932fdbb34/konsentrasi-co2-di-atmosfer-terus-naik-ini-rinciannya"><button type="button" class="btn btn-outline-danger">Dataset</button></a>
+                <canvas id="concentrationChart"></canvas>
+            </div>
+        </section>
+
+        <section id="carousel" class="tw-h-screen tw-content-center">
+            <div class="tw-flex-wrap align-content-center justify-center justify-content-center">
+                <div id="carouseltitle">
+                    <h1>Berita Terkini</h1>
                 </div>
-            </section>
+                <div id="carouselExampleCaptions" class="carousel slide col-md-8 col-sm-12 mx-auto" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        @foreach ($news as $n)
+                            @if ($loop->first)
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $n->newsID }}"></button>
+                            @else
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $n->newsID }}"></button>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="carousel-inner">
+                        @foreach ($news as $n)
+                            @if ($loop->first)
+                                <div class="carousel-item active">
+                                    <a href="{{ $n->newsLink }}" target="_blank">
+                                        <img src="{{ $n->newsImage }}" class="d-block w-100 tw-rounded-lg" alt="..." height="500">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $n->newsTitle }}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            @else
+                                <div class="carousel-item">
+                                    <a href="{{ $n->newsLink }}" target="_blank">
+                                        <img src="{{ $n->newsImage }}" class="d-block w-100 tw-rounded-lg" alt="..." height="500">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $n->newsTitle }}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    @if ($news && count($news) > 1)
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    @endif
+                </div>
+                <div class="tw-flex-wrap tw-text-center mt-5">
+                    <a href="#problemSection"><button type="button" class="btn btn-outline-light">Masalah yang dihadapi</button></a>
+                </div>
+            </div>
+        </section>
 
           <br>
-
-        {{-- <section id="news">
-            @foreach ($news as $n)
-            <a href="/newsDetail/{{ $n->newsID }}" target="_blank">
-                <div class="newsContainer">
-                    <div class="newsContainerLeft">
-                        <div class="newsContainerLeftTop"> <b>{{ $n->newsTitle }}</b>  </div>
-                        <div class="newsContainerLeftRight"> {{ $n->newsPublishDate }} </div>
-                    </div>
-                    <div class="newsContainerRight">
-                        <img src="{{ $n->newsImage }}" alt="newsImages" class="newsImages">
-                    </div>
-                </div>
-                </a>
-            <br>
-            @endforeach
-        </section> --}}
-
 
         <section id="problemSection" class="tw-bg-white tw-content-center">
             <div class="tw-flex-wrap align-content-center justify-center justify-content-center">
@@ -212,16 +205,16 @@
     </main>
 
     <script>
-        const data = @json($temp);
-        const years = data.map(item => item.year);
-        const noSmoothing = data.map(item => item.no_smoothing);
-        const lowess = data.map(item => item.lowess);
+        const tempData = @json($temp);
+        const tempYears = tempData.map(item => item.year);
+        const noSmoothing = tempData.map(item => item.no_smoothing);
+        const lowess = tempData.map(item => item.lowess);
 
-        const ctx = document.getElementById('temperatureChart').getContext('2d');
-        const chart = new Chart(ctx, {
+        const tempCtx = document.getElementById('temperatureChart').getContext('2d');
+        const tempChart = new Chart(tempCtx, {
             type: 'line',
             data: {
-                labels: years,
+                labels: tempYears,
                 datasets: [
                     // {
                     //     label: 'No Smoothing',
@@ -257,6 +250,51 @@
                         title: {
                             display: true,
                             text: 'Temperature Anomaly (°C)',
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script>
+        const concentrationData = @json($concentration);
+        const concentrationYears = concentrationData.map(item => item.year);
+        const concentration = concentrationData.map(item => item.concentration);
+
+        const concentrationCtx = document.getElementById('concentrationChart').getContext('2d');
+        const concentrationChart = new Chart(concentrationCtx, {
+            type: 'line',
+            data: {
+                labels: concentrationYears,
+                datasets: [
+                    {
+                        label: 'CO2 Concentration',
+                        data: concentration,
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'ppm',
                         },
                     }
                 }

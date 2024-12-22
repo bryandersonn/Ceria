@@ -213,6 +213,22 @@ main{
     padding-bottom: 5%;
 }
 
+.rightProblemImg{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.leftProblemImg{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#concentrationGraphic{
+    padding-bottom: 2%;
+}
+
 @media (max-width: 768px) {
     main{
        height: 100%;
@@ -228,9 +244,6 @@ main{
     #searchbar{
         margin-top: 50px;
         margin-bottom: 50px;
-    }
-    #problemSection{
-        margin-bottom: 100%;
     }
     .items{
         display: flex;

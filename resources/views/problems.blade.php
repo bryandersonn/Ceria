@@ -73,12 +73,12 @@
     <!-- Overview Section -->
     <div class="section-light py-5">
         <div class="container no-margin">
-            <div class="row d-flex tw-flex tw-bg-red-400">
+            <div class="row d-flex tw-flex">
                 <div class="col-6 justify-text align-content-center">
                     <h2>Overview</h2>
                     <p>{{ $problem->problemContent }}</p>
                 </div>
-                <div class="col-6 tw-justify-items-end align-content-center tw-bg-blue-300">
+                <div class="col-6 tw-justify-items-end align-content-center rightProblemImg">
                     <img id="headerpictures" src="/assets/overview.jpg" alt="overviewpic">
                 </div>
             </div>
@@ -89,7 +89,7 @@
     <div class="section-dark py-5">
         <div class="container no-margin">
             <div class="row d-flex justify-content-between">
-                <div class="col-6 offset-0 justify-text align-content-center">
+                <div class="col-6 offset-0 justify-text align-content-center leftProblemImg">
                     <img id="headerpictures" src="/assets/evidence.png" alt="evidencepic">
                 </div>
                 <div class="col-6 offset-0 justify-text align-content-center">
@@ -108,6 +108,9 @@
                     <h2>Effects</h2>
                     <p>{{ $problem->effects }}</p>
                 </div>
+                <div class="col-6 offset-0 justify-text align-content-center rightProblemImg">
+                    <img id="headerpictures" src="/assets/effects.jpg" alt="evidencepic">
+                </div>
             </div>
         </div>
     </div>
@@ -115,8 +118,11 @@
     <!-- Causes Section -->
     <div class="section-dark py-5">
         <div class="container no-margin">
-            <div class="row d-flex justify-content-end">
-                <div class="col-6 offset-6 text-right justify-text">
+            <div class="row d-flex justify-content-between">
+                <div class="col-6 offset-0 justify-text align-content-center leftProblemImg">
+                    <img id="headerpictures" src="/assets/cause.jpg" alt="evidencepic">
+                </div>
+                <div class="col-6 offset-0 justify-text align-content-center">
                     <h2>Causes</h2>
                     <p>{{ $problem->causes }}</p>
                 </div>
@@ -131,6 +137,9 @@
                 <div class="col-6 offset-0 justify-text">
                     <h2>Solution</h2>
                     <p>{{ $problem->solutions }}</p>
+                </div>
+                <div class="col-6 offset-0 justify-text align-content-center rightProblemImg">
+                    <img id="headerpictures" src="/assets/solution.png" alt="evidencepic">
                 </div>
             </div>
         </div>
