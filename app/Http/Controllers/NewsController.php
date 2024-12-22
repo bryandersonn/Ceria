@@ -61,10 +61,12 @@ class NewsController extends Controller
     {
         $problem = Problem::all();
         $news = News::all();
+        $allProblems = Problem::all();
 
         return view('news', [
             'news' => $news,
             'problem' => $problem,
+            'allProblems' => $allProblems,
         ]);
     }
 

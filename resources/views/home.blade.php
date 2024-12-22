@@ -64,6 +64,54 @@
             </div>
         </section>
 
+        <div class="vital-signs">
+            <div class="header tw-justify-center tw-flex">
+                <h1>TANDA-TANDA VITAL</h1>
+                <p class="tw-text-sky-400">(via NASA)</p>
+            </div>
+            <div class="items">
+                <div class="item">
+                    <div class="itemlabel">
+                        <h3>Karbon Dioksida</h3>
+                    </div>
+                    <div class="value up">
+                        <span>↑</span>424<span class="unit">bagian per miliar</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Suhu Global</h3>
+                    <div class="value up">
+                        <span>↑</span>1.4<span class="unit">°C sejak praindustri</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Gas Metana</h3>
+                    <div class="value up">
+                        <span>↑</span>1922<span class="unit">bagian per miliar</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Lapisan Es</h3>
+                    <div class="value down">
+                        <span>↓</span>406<span class="unit">miliar metrik ton per tahun</span>
+                    </div>
+                    <div class="hover-bar" id="down-hover"></div>
+                </div>
+            </div>
+        </div>
+
+        <section id="tempGraphic">
+            <div style="width: 80%; margin: 0 auto;">
+                <h1 class="tw-text-sky-400">Global Land-Ocean Temperature Index</h1>
+                <p class="tw-text-gray-400">Dilansir dari: NASA's Goddard Institute for Space Studies (GISS). Credit: NASA/GISS</p>
+                <p>Grafik Lowess menunjukkan tren suhu global yang dihaluskan, mengungkapkan pola jangka panjang. Data menunjukkan peningkatan suhu yang stabil sejak awal abad ke-20, dengan percepatan pemanasan yang signifikan dalam beberapa dekade terakhir, mencerminkan dampak perubahan iklim khususnya pada 10 tahun terakhir.</p>
+                <a href="https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt"><button type="button" class="btn btn-outline-info">Dataset</button></a>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+        </section>
 
             <section id="carousel" class="tw-h-screen tw-content-center">
                 <div class="tw-flex-wrap align-content-center justify-center justify-content-center">
@@ -145,7 +193,7 @@
                 <div class="tw-justify-center tw-flex tw-text-black">
                     <h1>Permasalahan Iklim</h1>
                 </div>
-                <div class="tw-justify-center tw-flex tw-text-black">
+                <div id="headerdesc" class="tw-justify-center tw-flex tw-text-black tw-mb-5">
                     <p>Pelajari permasalahan iklim akibat industri, khususnya di Indonesia:</p>
                 </div>
                 <section id="problems">
@@ -161,48 +209,6 @@
                 </section>
             </div>
         </section>
-
-        <div class="vital-signs">
-            <div class="header">
-                <h2>VITAL SIGNS</h2>
-                <a href="#" class="show-all">Show All</a>
-            </div>
-            <div class="items">
-                <div class="item">
-                    <h3>Carbon Dioxide</h3>
-                    <div class="value up">
-                        <span>↑</span> 424 <span class="unit">parts per million</span>
-                    </div>
-                    <div class="hover-bar"></div>
-                </div>
-                <div class="item">
-                    <h3>Global Temperature</h3>
-                    <div class="value up">
-                        <span>↑</span> 1.4 <span class="unit">°C since preindustrial</span>
-                    </div>
-                    <div class="hover-bar"></div>
-                </div>
-                <div class="item">
-                    <h3>Methane</h3>
-                    <div class="value up">
-                        <span>↑</span> 1922 <span class="unit">parts per billion</span>
-                    </div>
-                    <div class="hover-bar"></div>
-                </div>
-                <div class="item">
-                    <h3>Arctic Sea Ice Minimum Extent</h3>
-                    <div class="value down">
-                        <span>↓</span> 12.2 <span class="unit">percent per decade since 1979</span>
-                    </div>
-                    <div class="hover-bar"></div>
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 80%; margin: 0 auto;">
-            <h1>Global Land-Ocean Temperature Index</h1>
-            <canvas id="temperatureChart"></canvas>
-        </div>
     </main>
 
     <script>
@@ -217,13 +223,13 @@
             data: {
                 labels: years,
                 datasets: [
-                    {
-                        label: 'No Smoothing',
-                        data: noSmoothing,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 2,
-                        fill: false,
-                    },
+                    // {
+                    //     label: 'No Smoothing',
+                    //     data: noSmoothing,
+                    //     borderColor: 'rgba(255, 99, 132, 1)',
+                    //     borderWidth: 2,
+                    //     fill: false,
+                    // },
                     {
                         label: 'Lowess Smoothing',
                         data: lowess,

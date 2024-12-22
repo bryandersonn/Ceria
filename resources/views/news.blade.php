@@ -9,37 +9,44 @@
     rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
     <link rel="stylesheet" href="/css/news.css">
+    <link rel="stylesheet" href="/css/homeProblem.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    @vite('resources/css/app.css')
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Ceria</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav id="navigationbar" class="navbar navbar-expand-lg sticky-top p-1">
+        <div class="container-fluid gap-5">
+          <a class="navbar-brand text-white m-0" aria-current="page" href="/"><img class="tw-w-20" src="/assets/cerialogo.png" alt="Ceria"></a>
+          <button class="navbar-toggler tw-border-white tw-text-sky-400 tw-bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link active text-white" aria-current="page" href="/">Beranda</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Problems
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Masalah
                 </a>
                 <ul class="dropdown-menu">
-                    @foreach ($problem as $p)
-                        <li><a class="dropdown-item" onclick="window.location.href='{{ route('category.action', ['id' => $p->problemID]) }}'">{{ $p->problemName }}</a></li>
+                    @foreach ($allProblems as $ap)
+                        <li><a class="dropdown-item"
+                                onclick="window.location.href='{{ route('problemRedirect', ['id' => $ap->problemID]) }}'">{{ $ap->problemName }}</a>
+                        </li>
                     @endforeach
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/news">News</a>
+                <a class="nav-link active text-white" aria-current="page" href="/news">Berita</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" action="/search" method="GET">
-              <input class="form-control me-2" type="search" placeholder="Search News" aria-label="Search" name="query">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form id="searchbar" class="d-flex" role="search" action="/search" method="GET">
+              <input class="form-control me-2" type="search" placeholder="Cari Berita" aria-label="Search" name="query">
+              <button class="btn btn-outline-success" type="submit">Cari</button>
             </form>
           </div>
         </div>

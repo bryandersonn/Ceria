@@ -29,17 +29,17 @@
     <nav id="navigationbar" class="navbar navbar-expand-lg sticky-top p-1">
         <div class="container-fluid gap-5">
           <a class="navbar-brand text-white m-0" aria-current="page" href="/"><img class="tw-w-20" src="/assets/cerialogo.png" alt="Ceria"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler tw-border-white tw-text-sky-400 tw-bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
               <li class="nav-item">
-                <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                <a class="nav-link active text-white" aria-current="page" href="/">Beranda</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Problems
+                  Masalah
                 </a>
                 <ul class="dropdown-menu">
                     @foreach ($allProblems as $ap)
@@ -49,11 +49,13 @@
                     @endforeach
                 </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="/news">Berita</a>
+              </li>
             </ul>
-
-            <form class="d-flex" role="search" action="/search" method="GET">
-              <input class="form-control me-2" type="search" placeholder="Search News" aria-label="Search" name="query">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form id="searchbar" class="d-flex" role="search" action="/search" method="GET">
+              <input class="form-control me-2" type="search" placeholder="Cari Berita" aria-label="Search" name="query">
+              <button class="btn btn-outline-success" type="submit">Cari</button>
             </form>
           </div>
         </div>
@@ -71,10 +73,13 @@
     <!-- Overview Section -->
     <div class="section-light py-5">
         <div class="container no-margin">
-            <div class="row d-flex justify-content-start">
-                <div class="col-6 offset-0 justify-text">
+            <div class="row d-flex tw-flex tw-bg-red-400">
+                <div class="col-6 justify-text align-content-center">
                     <h2>Overview</h2>
                     <p>{{ $problem->problemContent }}</p>
+                </div>
+                <div class="col-6 tw-justify-items-end align-content-center tw-bg-blue-300">
+                    <img id="headerpictures" src="/assets/overview.jpg" alt="overviewpic">
                 </div>
             </div>
         </div>
@@ -83,8 +88,11 @@
     <!-- Evidence Section -->
     <div class="section-dark py-5">
         <div class="container no-margin">
-            <div class="row d-flex justify-content-end">
-                <div class="col-6 offset-6 text-right justify-text">
+            <div class="row d-flex justify-content-between">
+                <div class="col-6 offset-0 justify-text align-content-center">
+                    <img id="headerpictures" src="/assets/evidence.png" alt="evidencepic">
+                </div>
+                <div class="col-6 offset-0 justify-text align-content-center">
                     <h2>Evidence</h2>
                     <p>{{ $problem->evidence }}</p>
                 </div>
@@ -131,7 +139,7 @@
     <!-- Keep Exploring Section -->
     <div class="keep-exploring bg-light py-5">
         <div class="container">
-            <h3 class="mb-4">Keep Exploring</h3>
+            <h3 class="mb-4">Terus Menjelajah</h3>
             <div class="row">
                 @foreach ($allProblems as $ap)
                     @if ($ap->problemID !== $problem->problemID)
@@ -143,7 +151,7 @@
                                     <h5 class="card-title">{{ $ap->problemName }}</h5>
                                     <p class="card-text">{{ $ap->problemShortDescription }}</p>
                                     <a href="{{ route('problemRedirect', ['id' => $ap->problemID]) }}"
-                                        class="btn btn-primary">Learn More</a>
+                                        class="btn btn-secondary">Pelajari Lagi</a>
                                 </div>
                             </div>
                         </div>
