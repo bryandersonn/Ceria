@@ -35,7 +35,7 @@ class NewsController extends Controller
         $query = $request->input('query');
         $problem = Problem::all();
         $news = News::where('newsTitle', 'like', '%' . $query . '%')->get();
-        return view('home', [
+        return view('news', [
             'news' => $news,
             'problem' => $problem,
         ]);
@@ -44,9 +44,22 @@ class NewsController extends Controller
     public function detail($id)
     {
         $news = News::where('newsID', 'like', $id)->first();
+        $problem = Problem::where('problemID', 'like', $news->newsID)->first();
 
         return view('newsDetail', [
             'news' => $news,
+            'problem' => $problem,
+        ]);
+    }
+
+    public function news()
+    {
+        $problem = Problem::all();
+        $news = News::all();
+
+        return view('news', [
+            'news' => $news,
+            'problem' => $problem,
         ]);
     }
 }

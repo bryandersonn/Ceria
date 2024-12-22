@@ -10,24 +10,36 @@
 <body>
 
     <section id="newsDetailPage">
-        <div class="newsTitle">
-            {{ $news->newsTitle }}
+        <div class="newsDetailLeft">
+            <div class="newsDetailLeftContainer">
+                <div class="newsDetailLeftItem" id="newsWriter">
+                    {{ $news->newsWriter }}
+                </div>
+                <div class="newsDetailLeftItem" id="newsPublishDate">
+                    {{ $news->newsPublishDate }}
+                </div>
+
+                <div class="newsDetailLeftItem" id="newsProblemName">
+                    {{ $problem->problemName }}
+                </div>
+                <div id="newsLink">
+                    <button onclick="window.open('{{ $news->newsLink }}', '_blank')">Baca Lebih Lanjut</button>
+                    <button onclick="window.location.href = '/'">Kembali ke Halaman Utama</button>
+                </div>
+            </div>
         </div>
-        <div class="newsWriter">
-            Writer: {{ $news->newsWriter }}
+        <div class="newsDetailRight">
+            <div class="newsTitle">
+                {{ $news->newsTitle }}
+            </div>
+            <div class="newsImage">
+                <img src="{{ $news->newsImage }}" alt="newsImage">
+            </div>
+            <div class="newsContent">
+                {{ $news->newsContent }}
+            </div>
         </div>
-        <div class="newsPublishDate">
-            Published Date: {{ $news->newsPublishDate }}
-        </div>
-        <div class="newsImage">
-            <img src="{{ $news->newsImage }}" alt="newsImage">
-        </div>
-        <div class="newsContent">
-            {{ $news->newsContent }}
-        </div>
-        <div class="newsLink">
-            <a href="{{ $news->newsLink }}" target="_blank">Read More</a>
-        </div>
+
     </section>
 
 </body>

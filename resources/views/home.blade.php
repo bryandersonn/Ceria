@@ -34,6 +34,9 @@
                     @endforeach
                 </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/news">News</a>
+              </li>
             </ul>
             <form class="d-flex" role="search" action="/search" method="GET">
               <input class="form-control me-2" type="search" placeholder="Search News" aria-label="Search" name="query">
@@ -132,23 +135,6 @@
         </section>
 
           <br>
-
-        <section id="news">
-            @foreach ($news as $n)
-            <a href="/newsDetail/{{ $n->newsID }}" target="_blank">
-                <div class="newsContainer">
-                    <div class="newsContainerLeft">
-                        <div class="newsContainerLeftTop"> <b>{{ $n->newsTitle }}</b>  </div>
-                        <div class="newsContainerLeftRight"> {{ $n->newsPublishDate }} </div>
-                    </div>
-                    <div class="newsContainerRight">
-                        <img src="{{ $n->newsImage }}" alt="newsImages" class="newsImages">
-                    </div>
-                </div>
-                </a>
-            <br>
-            @endforeach
-        </section>
 
         <section id="problems">
             @foreach ($problem as $p)
