@@ -12,10 +12,12 @@ class NewsController extends Controller
     {
         $problem = Problem::all();
         $news = News::all();
+        $allProblems = Problem::all();
 
         return view('home', [
             'news' => $news,
             'problem' => $problem,
+            'allProblems' => $allProblems
         ]);
     }
 
@@ -60,6 +62,17 @@ class NewsController extends Controller
         return view('news', [
             'news' => $news,
             'problem' => $problem,
+        ]);
+    }
+
+    public function problemPage($id)
+    {
+        $problem = Problem::where("problemID", 'LIKE', $id)->first();
+        $allProblems = Problem::all();
+
+        return view('problems', [
+            'problem' => $problem,
+            'allProblems' => $allProblems,
         ]);
     }
 }
