@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ceria</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
@@ -40,7 +41,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/news">News</a>
+                <a class="nav-link active text-white" aria-current="page" href="/news">Berita</a>
               </li>
             </ul>
             <form id="searchbar" class="d-flex" role="search" action="/search" method="GET">
@@ -139,7 +140,7 @@
         </section> --}}
 
 
-        <section id="problemSection" class="tw-bg-white tw-h-screen tw-content-center">
+        <section id="problemSection" class="tw-bg-white tw-content-center">
             <div class="tw-flex-wrap align-content-center justify-center justify-content-center">
                 <div class="tw-justify-center tw-flex tw-text-black">
                     <h1>Permasalahan Iklim</h1>
@@ -160,7 +161,102 @@
                 </section>
             </div>
         </section>
+
+        <div class="vital-signs">
+            <div class="header">
+                <h2>VITAL SIGNS</h2>
+                <a href="#" class="show-all">Show All</a>
+            </div>
+            <div class="items">
+                <div class="item">
+                    <h3>Carbon Dioxide</h3>
+                    <div class="value up">
+                        <span>↑</span> 424 <span class="unit">parts per million</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Global Temperature</h3>
+                    <div class="value up">
+                        <span>↑</span> 1.4 <span class="unit">°C since preindustrial</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Methane</h3>
+                    <div class="value up">
+                        <span>↑</span> 1922 <span class="unit">parts per billion</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+                <div class="item">
+                    <h3>Arctic Sea Ice Minimum Extent</h3>
+                    <div class="value down">
+                        <span>↓</span> 12.2 <span class="unit">percent per decade since 1979</span>
+                    </div>
+                    <div class="hover-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 80%; margin: 0 auto;">
+            <h1>Global Land-Ocean Temperature Index</h1>
+            <canvas id="temperatureChart"></canvas>
+        </div>
     </main>
+
+    <script>
+        const data = @json($temp);
+        const years = data.map(item => item.year);
+        const noSmoothing = data.map(item => item.no_smoothing);
+        const lowess = data.map(item => item.lowess);
+
+        const ctx = document.getElementById('temperatureChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'No Smoothing',
+                        data: noSmoothing,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                    },
+                    {
+                        label: 'Lowess Smoothing',
+                        data: lowess,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Temperature Anomaly (°C)',
+                        },
+                    }
+                }
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

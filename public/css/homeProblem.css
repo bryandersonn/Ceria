@@ -139,3 +139,89 @@ main{
 .justify-text {
     text-align: justify;
 }
+
+.vital-signs {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 18px;
+    color: #5bc0de;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.show-all {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.show-all:hover {
+    color: #5bc0de;
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    width: 22%;
+    text-align: center;
+    position: relative;
+}
+
+.item h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.value {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.value span:first-child {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.value .unit {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.value.up span:first-child {
+    color: red;
+}
+
+.value.down span:first-child {
+    color: lightblue;
+}
+
+.hover-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background: red;
+    width: 0;
+    transition: width 0.4s ease;
+}
+
+.item:hover .hover-bar {
+    width: 100%;
+}

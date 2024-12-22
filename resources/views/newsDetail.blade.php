@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>News Detail</title>
     <link rel="stylesheet" href="/css/newsDetail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -39,7 +42,6 @@
                 {{ $news->newsContent }}
             </div>
         </div>
-
     </section>
 
 </body>

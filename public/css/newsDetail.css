@@ -6,6 +6,7 @@ body{
     display: flex;
     justify-content: center;
     padding-top: 50px;
+    font-family: "Kanit", serif;
 }
 
 #newsDetailPage{
@@ -69,6 +70,17 @@ body{
     color: white;
     padding: 10px;
     font-weight: bold;
+}
+
+#newsLink button:hover{
+    cursor: pointer;
+    opacity: .7;
+    transition: .15s;
+}
+
+#newsLink button:active{
+    opacity: .4;
+    transition: .15s;
 }
 
 .newsDetailRight{

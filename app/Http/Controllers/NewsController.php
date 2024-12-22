@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Problem;
+use App\Models\TemperatureIndex;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -13,11 +14,13 @@ class NewsController extends Controller
         $problem = Problem::all();
         $news = News::all();
         $allProblems = Problem::all();
+        $temp = TemperatureIndex::all();
 
         return view('home', [
             'news' => $news,
             'problem' => $problem,
-            'allProblems' => $allProblems
+            'allProblems' => $allProblems,
+            'temp' => $temp,
         ]);
     }
 
@@ -75,4 +78,6 @@ class NewsController extends Controller
             'allProblems' => $allProblems,
         ]);
     }
+
+
 }
